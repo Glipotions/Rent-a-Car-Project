@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constant;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,29 +18,49 @@ namespace Business.Concrete
 			_colorDal = colorDal;
 		}
 
-		public void Add(Color entity)
+		public IResult Add(Color entity)
 		{
 			_colorDal.Add(entity);
+			return new SuccessResult(Messages.Added);
 		}
 
-		public void Delete(Color entity)
+		public IResult Delete(Color entity)
 		{
 			_colorDal.Delete(entity);
+			return new SuccessResult(Messages.Deleted);
 		}
 
-		public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+		public IDataResult<List<Color>> GetAll(Expression<Func<Color, bool>> filter = null)
 		{
-			return _colorDal.GetAll();
+			if (DateTime.Now.Hour == 22)
+			{
+				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
+			}
+			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.Listed);
 		}
 
-		public List<Color> GetAllByColorId(int id)
+		public IDataResult<List<Color>> GetAllByColorId(int id)
 		{
-			return _colorDal.GetAll(c => c.ColorId == id);
+			if (DateTime.Now.Hour == 22)
+			{
+				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
+			}
+			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == id), Messages.Listed);
 		}
 
-		public void Update(Color entity)
+		public IDataResult<List<Color>> GetById(int id)
+		{
+			if (DateTime.Now.Hour == 22)
+			{
+				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
+			}
+			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == id), Messages.Listed);
+		}
+
+		public IResult Update(Color entity)
 		{
 			_colorDal.Update(entity);
+			return new SuccessResult(Messages.Updated);
 		}
 	}
 }
