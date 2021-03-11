@@ -36,11 +36,6 @@ namespace Business.Concrete
 			return _brandDal.GetAll(b => b.BrandId==id);
 		}
 
-		public List<Brand> GetAllByColorId(int id)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Update(Brand entity)
 		{
 			_brandDal.Update(entity);

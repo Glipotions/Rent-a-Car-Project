@@ -31,11 +31,6 @@ namespace Business.Concrete
 			return _colorDal.GetAll();
 		}
 
-		public List<Color> GetAllByBrandId(int id)
-		{
-			throw new NotImplementedException();
-		}
-
 		public List<Color> GetAllByColorId(int id)
 		{
 			return _colorDal.GetAll(c => c.ColorId == id);
