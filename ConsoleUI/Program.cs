@@ -12,17 +12,45 @@ namespace ConsoleUI
 		static void Main(string[] args)
 		{
 			//BrandAddToDb();
-
 			//ColorAddToDb();
-
-			CarAddToDb();
-
+			//CarAddToDb();
 			//carGetByBrandId(2);
-
 			//CarGetAll();
-
 			//CarDetailsList();
+			//CustomerAdd();
+			//CustomerTest();
 
+
+
+
+		}
+
+		private static void CustomerTest()
+		{
+			CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+			var result = customerManager.GetById(1);
+			foreach (var customer in result.Data)
+			{
+				Console.WriteLine(customer.UserId + " -- " + customer.CompanyName);
+			}
+		}
+
+		private static void CustomerAdd()
+		{
+			UserManager userManager = new UserManager(new EfUserDal());
+			userManager.Add(new User { UserId = 1, FirstName = "Hamza", LastName = "Kavak", Email = "hamzakavak@gmail.com", Password = "12345" });
+			userManager.Add(new User { UserId = 2, FirstName = "Erkam", LastName = "Kavak", Email = "erkavak@gmail.com", Password = "12345" });
+			userManager.Add(new User { UserId = 3, FirstName = "Mustafa", LastName = "Kavak", Email = "mstfkavak@gmail.com", Password = "123" });
+			userManager.Add(new User { UserId = 4, FirstName = "Mert", LastName = "Yalın", Email = "mrtYalin@gmail.com", Password = "12345" });
+			userManager.Add(new User { UserId = 5, FirstName = "Samet", LastName = "Sızı", Email = "sizisamet@gmail.com", Password = "12345" });
+
+
+			CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+			customerManager.Add(new Customer { UserId = 1, CompanyName = "MalMülk İnşaat" });
+			customerManager.Add(new Customer { UserId = 2, CompanyName = "Shady Records" });
+			customerManager.Add(new Customer { UserId = 3, CompanyName = "İnterscope Records" });
+			customerManager.Add(new Customer { UserId = 4, CompanyName = "Merch" });
+			customerManager.Add(new Customer { UserId = 5, CompanyName = "Glipotions A.Ş" });
 		}
 
 		private static void CarDetailsList()

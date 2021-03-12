@@ -18,5 +18,18 @@ namespace Business.Constant
 		public static string Updated = "Güncellendi! ";
 		public static string Added = "Eklendi! ";
 		public static string Listed = "Listelendi! ";
+		public static string UserNamedInvalid="Kullanıcı adı 3 harften az olamaz!";
+		public static string UserAdded="Kullanıcı Eklendi";
+		public static string UserUpdate="Kullanıcı Güncellendi";
+		public static string UserDeleted="Kullanıcı Silindi";
+		public static string RentalAdded = "Kiralama işlemi başlatıldı!";
+		public static string RentalUpdated = "Kiralama işlemi Güncellendi";
+		public static string CustomerAdded = "Müşteri Eklendi";
+		public static string CustomerDeleted = "Müşteri Silindi";
+		public static string CustomerUpdated = "Müşteri Güncellendi";
+		public static string RentalDeleted = "Kiralama işlemi Silindi";
+		public static string RentalUpdateReturnDateError= "Kiralama dönüş tarihi güncelleme işlemi başarısız!!";
+		public static string RentalUpdateReturnDate="Kiralama dönüş tarihi güncelleme işlemi başarılı!";
+		public static string RentalAddedError="Kiralama işlemi Başarısız";
 	}
 }
