@@ -20,8 +20,8 @@ namespace ConsoleUI
 			//CustomerAdd();
 			//CustomerTest();
 
-
-
+			CarManager carManager = new CarManager(new EfCarDal());
+			carManager.Delete(new Car { Id=5});
 
 		}
 
