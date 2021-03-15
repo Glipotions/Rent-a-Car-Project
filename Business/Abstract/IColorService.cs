@@ -8,6 +8,6 @@ namespace Business.Abstract
 {
 	public interface IColorService:IEntityService<Color>
 	{
-		IDataResult<List<Color>> GetAllByColorId(int id);
+
 	}
 }

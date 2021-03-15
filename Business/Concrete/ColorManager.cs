@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constant;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,7 +19,7 @@ namespace Business.Concrete
 		{
 			_colorDal = colorDal;
 		}
-
+		[ValidationAspect(typeof(ColorValidator))]
 		public IResult Add(Color entity)
 		{
 			_colorDal.Add(entity);
@@ -36,16 +38,7 @@ namespace Business.Concrete
 			{
 				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
 			}
-			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.Listed);
-		}
-
-		public IDataResult<List<Color>> GetAllByColorId(int id)
-		{
-			if (DateTime.Now.Hour == 22)
-			{
-				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
-			}
-			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == id), Messages.Listed);
+			return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
 		}
 
 		public IDataResult<List<Color>> GetById(int id)

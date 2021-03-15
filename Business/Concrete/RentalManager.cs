@@ -1,8 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constant;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +24,7 @@ namespace Business.Concrete
 			_rentalDal = rentalDal;
 		}
 
+		[ValidationAspect(typeof(RentalValidator))]
 		public IResult Add(Rental entity)
 		{
 			var result = CheckReturnDate(entity.CarId);
@@ -31,10 +36,6 @@ namespace Business.Concrete
 
 			_rentalDal.Add(entity);
 			return new SuccessResult(Messages.RentalAdded);
-
-			//_rentalDal.Add(entity);
-
-			//return new SuccessResult(Messages.RentalAdded);
 		}
 
 		public IResult CheckReturnDate(int carId)
@@ -98,5 +99,18 @@ namespace Business.Concrete
 
 			return new SuccessResult(Messages.RentalUpdated);
 		}
+
+		public IDataResult<List<CarRentalDetailsDto>> GetCarRentalDetails(Expression<Func<Rental, bool>> filter = null)
+		{
+
+			return new SuccessDataResult<List<CarRentalDetailsDto>>(_rentalDal.GetCarRentalDetails(filter),Messages.RentalDetails);
+		}
+
+
+		public IDataResult<List<Rental>> GetAll()
+		{
+			return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+		}
+
 	}
 }

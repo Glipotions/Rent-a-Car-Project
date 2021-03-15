@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.DTOs
 {
-	public class CustomerDetailsDto
+	public class CustomerDetailsDto:IDto
 	{
 		public int Id { get; set; }
 		public string FirstName { get; set; }

@@ -11,11 +11,11 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-	public class EfCustomerDal : EfEntityRepositoryBase<Customer, NorthwindContext>, ICustomerDal
+	public class EfCustomerDal : EfEntityRepositoryBase<Customer, ReCapProjectContext>, ICustomerDal
 	{
 		public List<CustomerDetailsDto> GetCustomerDetails()
 		{
-			using (NorthwindContext context = new NorthwindContext())
+			using (ReCapProjectContext context = new ReCapProjectContext())
 			{
 				var result = from c in context.Customers
 							 join u in context.Users

@@ -52,6 +52,60 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
+		[HttpPost("delete")]
+		public IActionResult Delete(Rental rental)
+		{
+			var result = _rentalService.Delete(rental);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpPost("update")]
+		public IActionResult Update(Rental rental)
+		{
+			var result = _rentalService.Update(rental);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpPost("GetAllByCarId")]
+		public IActionResult GetAllByCarId(int id)
+		{
+			var result = _rentalService.GetAllByCarId(id);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpPost("GetAllByCustomerId")]
+		public IActionResult GetAllByCustomerId(int id)
+		{
+			var result = _rentalService.GetAllByCustomerId(id);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpPost("GetCarRentalDetails")]
+		public IActionResult GetCarRentalDetails()
+		{
+			var result = _rentalService.GetCarRentalDetails();
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
 
 	}
 }

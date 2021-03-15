@@ -31,5 +31,9 @@ namespace Business.Constant
 		public static string RentalUpdateReturnDateError= "Kiralama dönüş tarihi güncelleme işlemi başarısız!!";
 		public static string RentalUpdateReturnDate="Kiralama dönüş tarihi güncelleme işlemi başarılı!";
 		public static string RentalAddedError="Kiralama işlemi Başarısız";
+		public static string CarDetails ="Arabalar detaylı olarak listelendi!" ;
+		public static string RentalDetails ="Kiralanan araçlar listelendi!" ;
+		internal static string FailedRentalAddOrUpdate;
+		internal static string AddedRental;
 	}
 }

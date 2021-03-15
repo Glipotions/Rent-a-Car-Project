@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constant;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,18 +20,13 @@ namespace Business.Concrete
 		{
 			_brandDal = brandDal;
 		}
+		
+		[ValidationAspect(typeof(BrandValidator))]
 		public IResult Add(Brand entity)
 		{
 			
-			if (entity.BrandName.Length < 2)
-			{
-				return new ErrorResult(Messages.BrandNamedInvalid);
-			}
-
 			_brandDal.Add(entity);
-
 			return new SuccessResult(Messages.BrandAdded);
-
 		}
 
 		public IResult Delete(Brand entity)

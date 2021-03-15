@@ -10,33 +10,34 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-	public class EfRentalDal : EfEntityRepositoryBase<Rental, NorthwindContext>, IRentalDal
+	public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapProjectContext>, IRentalDal
 	{
-		public List<CarRentalDetailsDto> GetCarRentalDetails(Expression<Func<Rental, bool>> filter = null)
+        //Expression<Func<Rental, bool>> filter = null
+        //filter == null ? context.Rentals : context.Rentals.Where(filter)
+        public List<CarRentalDetailsDto> GetCarRentalDetails(Expression<Func<Rental, bool>> filter = null)
 		{
-			using (NorthwindContext context = new NorthwindContext())
+			using (ReCapProjectContext context = new ReCapProjectContext())
 			{
-                var result = from rnt in filter is null ? context.Rentals : context.Rentals.Where(filter)
-                             join cr in context.Cars on rnt.CarId equals cr.Id
-                             join col in context.Colors on cr.ColorId equals col.ColorId
-                             join brd in context.Brands on cr.BrandId equals brd.BrandId
-                             join cus in context.Customers on rnt.CustomerId equals cus.CustomerId
-                             join usr in context.Users on cus.UserId equals usr.UserId
+                var result = from r in filter == null ? context.Rentals : context.Rentals.Where(filter)
+                             join c in context.Cars
+                             on r.CarId equals c.Id
+                             join cu in context.Customers
+                             on r.CustomerId equals cu.CustomerId
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join u in context.Users
+                             on cu.UserId equals u.UserId
                              select new CarRentalDetailsDto
                              {
-                                 RentalId = rnt.Id,
-                                 CustomerName = usr.FirstName,
-                                 CustomerLastName = usr.LastName,
-                                 CustomerCompanyName = cus.CompanyName,
-                                 CarName = cr.Description,
-                                 BrandName = brd.BrandName,
-                                 ColorName = col.ColorName,
-                                 DailyPrice = cr.DailyPrice,
-                                 RentDate = rnt.RentDate,
-                                 ReturnDate = rnt.ReturnDate
+                                 RentalId = r.Id,
+                                 CarName = b.BrandName,
+                                 CustomerName = u.FirstName + " " + u.LastName,
+                                 RentDate = r.RentDate,
+                                 ReturnDate = r.ReturnDate,
+                                 TotalPrice = Convert.ToDecimal(r.ReturnDate.Value.Day - r.RentDate.Day) * c.DailyPrice
                              };
-
-                return result.ToList();
+                var x= result.ToList();
+                return x;
             }
 		}
 	}
