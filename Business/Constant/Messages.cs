@@ -33,7 +33,7 @@ namespace Business.Constant
 		public static string RentalAddedError="Kiralama işlemi Başarısız";
 		public static string CarDetails ="Arabalar detaylı olarak listelendi!" ;
 		public static string RentalDetails ="Kiralanan araçlar listelendi!" ;
-		internal static string FailedRentalAddOrUpdate;
-		internal static string AddedRental;
+		internal static string FailedRentalAddOrUpdate="Kiralama işleminde bir hata meydana geldi!";
+		internal static string AddedRental="Kiralama işlemi başarılı!";
 	}
 }

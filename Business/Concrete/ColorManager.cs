@@ -47,7 +47,7 @@ namespace Business.Concrete
 			{
 				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
 			}
-			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == id), Messages.Listed);
+			return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.Id == id), Messages.Listed);
 		}
 
 		public IResult Update(Color entity)

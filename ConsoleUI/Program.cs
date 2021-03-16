@@ -243,7 +243,7 @@ namespace ConsoleUI
             Console.Write("Silmek istediğiniz Kayıt ID : ");
             _deleteUserId = Convert.ToInt32(Console.ReadLine());
 
-            User deleteUser = new User { UserId = _deleteUserId };
+            User deleteUser = new User { Id = _deleteUserId };
 
             var result = userManager.Delete(deleteUser);
             Console.WriteLine(result.Message);
@@ -270,7 +270,7 @@ namespace ConsoleUI
 
             User user = new User
             {
-                UserId = _updateUserId,
+                Id = _updateUserId,
                 FirstName = _firstName,
                 LastName = _lastName,
                 Email = _email,
@@ -295,7 +295,7 @@ namespace ConsoleUI
             Console.ResetColor();
             foreach (var user in result.Data)
             {
-                Console.WriteLine(String.Format("| {0,-5}| {1,-20}| {2,-20}| {3,-25}|", user.UserId, user.FirstName, user.LastName, user.Email));
+                Console.WriteLine(String.Format("| {0,-5}| {1,-20}| {2,-20}| {3,-25}|", user.Id, user.FirstName, user.LastName, user.Email));
             }
             Console.WriteLine("-------------------------------------------------------------------------------");
 
@@ -360,7 +360,7 @@ namespace ConsoleUI
             Console.ResetColor();
             foreach (var colors in result.Data)
             {
-                Console.WriteLine(String.Format("| {0,-5}| {1,-15}|", colors.ColorId, colors.ColorName));
+                Console.WriteLine(String.Format("| {0,-5}| {1,-15}|", colors.Id, colors.ColorName));
             }
             Console.WriteLine("-------------------------");
         }
@@ -549,7 +549,7 @@ namespace ConsoleUI
             Console.ResetColor();
             foreach (var brands in result.Data)
             {
-                Console.WriteLine(String.Format("| {0,-5}| {1,-15}|", brands.BrandId, brands.BrandName));
+                Console.WriteLine(String.Format("| {0,-5}| {1,-15}|", brands.Id, brands.BrandName));
             }
             Console.WriteLine("-------------------------");
         }
@@ -570,7 +570,7 @@ namespace ConsoleUI
             Console.ResetColor();
             foreach (var customer in result.Data)
             {
-                Console.WriteLine("| {0,-5}| {1,-10}| {2,-44}|", customer.CustomerId, customer.UserId, customer.CompanyName);
+                Console.WriteLine("| {0,-5}| {1,-10}| {2,-44}|", customer.Id, customer.UserId, customer.CompanyName);
             }
             Console.WriteLine("------------------------------------------------------------------");
         }
@@ -618,7 +618,7 @@ namespace ConsoleUI
 
             Customer customer = new Customer
             {
-                CustomerId = _customerId,
+                Id = _customerId,
                 UserId = _userId,
                 CompanyName = _companyName
             };
@@ -633,7 +633,7 @@ namespace ConsoleUI
             Console.Write("Silmek istediğiniz Kayıt ID : ");
             _deletedCustomerId = Convert.ToInt32(Console.ReadLine());
 
-            Customer deleteCustomer = new Customer { CustomerId = _deletedCustomerId };
+            Customer deleteCustomer = new Customer { Id = _deletedCustomerId };
 
             var result = customerManager.Delete(deleteCustomer);
             Console.WriteLine(result.Message);
@@ -747,11 +747,11 @@ namespace ConsoleUI
 		private static void CustomerAdd()
 		{
 			UserManager userManager = new UserManager(new EfUserDal());
-			userManager.Add(new User { UserId = 1, FirstName = "Hamza", LastName = "Kavak", Email = "hamzakavak@gmail.com", Password = "12345" });
-			userManager.Add(new User { UserId = 2, FirstName = "Erkam", LastName = "Kavak", Email = "erkavak@gmail.com", Password = "12345" });
-			userManager.Add(new User { UserId = 3, FirstName = "Mustafa", LastName = "Kavak", Email = "mstfkavak@gmail.com", Password = "123" });
-			userManager.Add(new User { UserId = 4, FirstName = "Mert", LastName = "Yalın", Email = "mrtYalin@gmail.com", Password = "12345" });
-			userManager.Add(new User { UserId = 5, FirstName = "Samet", LastName = "Sızı", Email = "sizisamet@gmail.com", Password = "12345" });
+			userManager.Add(new User { Id = 1, FirstName = "Hamza", LastName = "Kavak", Email = "hamzakavak@gmail.com", Password = "12345" });
+			userManager.Add(new User { Id = 2, FirstName = "Erkam", LastName = "Kavak", Email = "erkavak@gmail.com", Password = "12345" });
+			userManager.Add(new User { Id = 3, FirstName = "Mustafa", LastName = "Kavak", Email = "mstfkavak@gmail.com", Password = "123" });
+			userManager.Add(new User { Id = 4, FirstName = "Mert", LastName = "Yalın", Email = "mrtYalin@gmail.com", Password = "12345" });
+			userManager.Add(new User { Id = 5, FirstName = "Samet", LastName = "Sızı", Email = "sizisamet@gmail.com", Password = "12345" });
 
 
 			CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
@@ -811,20 +811,20 @@ namespace ConsoleUI
 		private static void BrandAddToDb()
 		{
 			BrandManager brandManager = new BrandManager(new EfBrandDal());
-			brandManager.Add(new Brand { BrandId = 1, BrandName = "Mercedes" });
-			brandManager.Add(new Brand { BrandId = 2, BrandName = "Bmw" });
-			brandManager.Add(new Brand { BrandId = 3, BrandName = "Volkswagen" });
-			brandManager.Add(new Brand { BrandId = 4, BrandName = "Ford" });
-			brandManager.Add(new Brand { BrandId = 5, BrandName = "Skoda" });
+			brandManager.Add(new Brand { Id = 1, BrandName = "Mercedes" });
+			brandManager.Add(new Brand { Id = 2, BrandName = "Bmw" });
+			brandManager.Add(new Brand { Id = 3, BrandName = "Volkswagen" });
+			brandManager.Add(new Brand { Id = 4, BrandName = "Ford" });
+			brandManager.Add(new Brand { Id = 5, BrandName = "Skoda" });
 		}
 
 		private static void ColorAddToDb()
 		{
 			ColorManager colorManager = new ColorManager(new EfColorDal());
-			colorManager.Add(new Color { ColorId = 1, ColorName = "Siyah" });
-			colorManager.Add(new Color { ColorId = 2, ColorName = "Kırmızı" });
-			colorManager.Add(new Color { ColorId = 3, ColorName = "Gri" });
-			colorManager.Add(new Color { ColorId = 4, ColorName = "Beyaz" });
+			colorManager.Add(new Color { Id = 1, ColorName = "Siyah" });
+			colorManager.Add(new Color { Id = 2, ColorName = "Kırmızı" });
+			colorManager.Add(new Color { Id = 3, ColorName = "Gri" });
+			colorManager.Add(new Color { Id = 4, ColorName = "Beyaz" });
 		}
 
 		private static void CarAddToDb()
