@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constant
 {
 	public class Messages
 	{
-		//public static string ProductAdded = "Araba Eklendi";
-		//public static string ProductNamedInvalid = "Araba ismi en az 2 karakter olmalıdır!";
+		public static string[] ValidImageFileTypes = { ".JPG", ".JPEG", ".PNG", ".TIF", ".TIFF", ".GIF", ".BMP", ".ICO" };
 		public static string ProductsListed = "Araba(lar) Listelendi";
 		public static string MaintenanceTime = "Sistem Bakımda!";
 		public static string CarNamedInvalid = "Araba ismi en az 2 karakter olmalıdır!";
@@ -27,13 +27,19 @@ namespace Business.Constant
 		public static string CustomerAdded = "Müşteri Eklendi";
 		public static string CustomerDeleted = "Müşteri Silindi";
 		public static string CustomerUpdated = "Müşteri Güncellendi";
+
+
 		public static string RentalDeleted = "Kiralama işlemi Silindi";
-		public static string RentalUpdateReturnDateError= "Kiralama dönüş tarihi güncelleme işlemi başarısız!!";
-		public static string RentalUpdateReturnDate="Kiralama dönüş tarihi güncelleme işlemi başarılı!";
-		public static string RentalAddedError="Kiralama işlemi Başarısız";
-		public static string CarDetails ="Arabalar detaylı olarak listelendi!" ;
-		public static string RentalDetails ="Kiralanan araçlar listelendi!" ;
-		internal static string FailedRentalAddOrUpdate="Kiralama işleminde bir hata meydana geldi!";
-		internal static string AddedRental="Kiralama işlemi başarılı!";
+		public static string RentalUpdateReturnDateError = "Kiralama dönüş tarihi güncelleme işlemi başarısız!!";
+		public static string RentalUpdateReturnDate = "Kiralama dönüş tarihi güncelleme işlemi başarılı!";
+		public static string RentalAddedError = "Kiralama işlemi Başarısız";
+		public static string CarDetails = "Arabalar detaylı olarak listelendi!";
+		public static string RentalDetails = "Kiralanan araçlar listelendi!";
+
+
+		public static string ImageLimitExpiredForCar = "Bir arabaya maximum 5 fotoğraf eklenebilir";
+		public static string InvalidImageExtension = "Geçersiz dosya uzantısı, fotoğraf için kabul edilen uzantılar" + string.Join(",", ValidImageFileTypes);
+		public static string CarImageMustBeExists = "Böyle bi resim bulunamadı";
+		public static string CarHaveNoImage = "Arabaya ait bi resim yok";
 	}
 }
