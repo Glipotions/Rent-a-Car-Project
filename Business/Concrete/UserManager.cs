@@ -1,60 +1,37 @@
 ﻿using Business.Abstract;
 using Business.Constant;
-using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
 {
-	public class UserManager : IUserService
-	{
-		IUserDal _userDal;
+    public class UserManager : IUserService
+    {
+        IUserDal _userDal;
+        public UserManager(IUserDal userDal)
+        {
+            _userDal = userDal;
+        }
 
-		public UserManager(IUserDal userDal)
-		{
-			_userDal = userDal;
-		}
-		[ValidationAspect(typeof(UserValidator))]
-		public IResult Add(User entity)
-		{
-			if (entity.FirstName.Length < 3)
-			{
-				return new ErrorResult(Messages.UserNamedInvalid);
-			}
+        public IResult Add(User user)
+        {
+            _userDal.Add(user);
+            return new SuccessResult();
+        }
 
-			_userDal.Add(entity);
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
+        }
 
-			return new SuccessResult(Messages.UserAdded);
-		}
-
-		public IResult Delete(User entity)
-		{
-			_userDal.Delete(entity);
-
-			return new SuccessResult(Messages.UserDeleted);
-		}
-
-		public IDataResult<List<User>> GetAll(Expression<Func<User, bool>> filter = null)
-		{
-			return new SuccessDataResult<List<User>>(_userDal.GetAll());
-		}
-
-		public IDataResult<List<User>> GetById(int id)
-		{
-			return new SuccessDataResult<List<User>>(_userDal.GetAll(u=>u.Id == id));
-		}
-
-		public IResult Update(User entity)
-		{
-			_userDal.Update(entity);
-
-			return new SuccessResult(Messages.UserUpdate);
-		}
-	}
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
+        }
+    }
 }

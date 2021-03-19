@@ -6,7 +6,7 @@ namespace Core.Constants
 {
 	public class Messages
 	{
-		internal static string FileNotFound;
-		internal static string SuccessFileUpload;
+		public static string FileNotFound="Dosya bulunamadı";
+		public static string SuccessFileUpload="Dosya yüklemesi başarılı";
 	}
 }
