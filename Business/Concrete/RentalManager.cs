@@ -1,7 +1,8 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
-using Business.Constant;
+using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -25,7 +26,7 @@ namespace Business.Concrete
 			_rentalDal = rentalDal;
 		}
 
-		//[SecuredOperation("product.add,admin")]
+
 		[ValidationAspect(typeof(RentalValidator))]
 		public IResult Add(Rental entity)
 		{
@@ -74,7 +75,7 @@ namespace Business.Concrete
 
 			return new SuccessResult(Messages.RentalDeleted);
 		}
-
+		[CacheAspect]
 		public IDataResult<List<Rental>> GetAll(Expression<Func<Rental, bool>> filter = null)
 		{
 			return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
