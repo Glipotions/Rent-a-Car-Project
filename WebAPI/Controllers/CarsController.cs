@@ -40,8 +40,62 @@ namespace WebAPI.Controllers
 				return Ok(result);
 			}
 			return BadRequest(result);
-
 		}
+
+		[HttpGet("getallbycolorid")]
+		public IActionResult GetAllByColorId(int id)
+		{
+			var result = _carService.GetAllByColorId(id);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+
+		[HttpGet("getallbybrandid")]
+		public IActionResult GetAllByBrandId(int id)
+		{
+			var result = _carService.GetAllByBrandId(id);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpGet("getcardetails")]
+		public IActionResult GetCarDetails()
+		{
+			var result = _carService.GetCarDetails();
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest(result);
+		}
+
+		[HttpGet("getcardetailsbyid")]
+		public IActionResult GetCarDetailsById(int carId)
+		{
+			var result = _carService.GetCarDetailsById(carId);
+			if (result.Success) { return Ok(result); }
+			return BadRequest(result);
+		}
+
+		[HttpGet("getcardetailbrandandcolorid")]
+		public IActionResult GetCarDetailBrandAndColorId(int brandId, int colorId)
+		{
+			var result = _carService.GetCarDetailsFilter(brandId, colorId);
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+
+			return BadRequest(result);
+		}
+
 
 		[HttpPost("add")]
 		public IActionResult Add(Car car)
@@ -75,43 +129,6 @@ namespace WebAPI.Controllers
 			}
 			return BadRequest(result);
 		}
-
-		[HttpPost("getallbycolorid")]
-		public IActionResult GetAllByColorId(int id)
-		{
-			var result = _carService.GetAllByColorId(id);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-		[HttpPost("getallbybrandid")]
-		public IActionResult GetAllByBrandId(int id)
-		{
-			var result = _carService.GetAllByBrandId(id);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-		[HttpPost("getcarDetails")]
-		public IActionResult GetCarDetails()
-		{
-			var result = _carService.GetCarDetails();
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-
-
-
 
 	}
 }

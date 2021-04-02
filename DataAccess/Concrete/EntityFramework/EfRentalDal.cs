@@ -10,35 +10,37 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-	public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapProjectContext>, IRentalDal
-	{
-        //Expression<Func<Rental, bool>> filter = null
-        //filter == null ? context.Rentals : context.Rentals.Where(filter)
+    public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapProjectContext>, IRentalDal
+    {
         public List<CarRentalDetailsDto> GetCarRentalDetails(Expression<Func<Rental, bool>> filter = null)
-		{
-			using (ReCapProjectContext context = new ReCapProjectContext())
-			{
-                var result = from r in filter == null ? context.Rentals : context.Rentals.Where(filter)
-                             join c in context.Cars
-                             on r.CarId equals c.Id
-                             join cu in context.Customers
-                             on r.CustomerId equals cu.Id
-                             join b in context.Brands
-                             on c.BrandId equals b.Id
-                             join u in context.Users
-                             on cu.UserId equals u.Id
+        {
+
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+
+                var result = from rt in filter == null ? context.Rentals : context.Rentals.Where(filter)
+                             join cr in context.Cars on rt.CarId equals cr.Id
+                             join cst in context.Customers on rt.CustomerId equals cst.Id
+                             join usr in context.Users on cst.UserId equals usr.Id
+                             join brd in context.Brands on cr.BrandId equals brd.Id
+                             join clr in context.Colors on cr.ColorId equals clr.Id
                              select new CarRentalDetailsDto
                              {
-                                 RentalId = r.Id,
-                                 CarName = b.BrandName,
-                                 CustomerName = u.FirstName + " " + u.LastName,
-                                 RentDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate,
-                                 TotalPrice = Convert.ToDecimal(r.ReturnDate.Value.Day - r.RentDate.Day) * c.DailyPrice
+                                 Id = rt.Id,
+                                 CompanyName = cst.CompanyName,
+                                 CarModelYear = cr.ModelYear,
+                                 CarDailyPrice = cr.DailyPrice,
+                                 CarDescription = cr.Description,
+                                 CarId = rt.CarId,
+                                 FirstName = usr.FirstName,
+                                 LastName = usr.LastName,
+                                 BrandName = brd.BrandName,
+                                 ColorName = clr.ColorName,
+                                 RentDate = rt.RentDate,
+                                 ReturnDate = rt.ReturnDate
                              };
-                var x= result.ToList();
-                return x;
+                return result.ToList();
             }
-		}
-	}
+        }
+    }
 }

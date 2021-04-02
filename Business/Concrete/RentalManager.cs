@@ -102,18 +102,18 @@ namespace Business.Concrete
 
 			return new SuccessResult(Messages.RentalUpdated);
 		}
-
-		public IDataResult<List<CarRentalDetailsDto>> GetCarRentalDetails(Expression<Func<Rental, bool>> filter = null)
+		//Expression<Func<Rental, bool>> filter = null
+		public IDataResult<List<CarRentalDetailsDto>> GetCarRentalDetails()
 		{
 
-			return new SuccessDataResult<List<CarRentalDetailsDto>>(_rentalDal.GetCarRentalDetails(filter),Messages.RentalDetails);
+			return new SuccessDataResult<List<CarRentalDetailsDto>>(_rentalDal.GetCarRentalDetails());
 		}
 
 
-		public IDataResult<List<Rental>> GetAll()
-		{
-			return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
-		}
+		//public IDataResult<List<Rental>> GetAll()
+		//{
+		//	return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+		//}
 
 	}
 }

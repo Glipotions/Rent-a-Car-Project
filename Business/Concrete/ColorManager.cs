@@ -34,7 +34,7 @@ namespace Business.Concrete
 
 		public IDataResult<List<Color>> GetAll(Expression<Func<Color, bool>> filter = null)
 		{
-			if (DateTime.Now.Hour == 22)
+			if (DateTime.Now.Hour == 03)
 			{
 				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
 			}
@@ -43,7 +43,7 @@ namespace Business.Concrete
 
 		public IDataResult<List<Color>> GetById(int id)
 		{
-			if (DateTime.Now.Hour == 22)
+			if (DateTime.Now.Hour == 03)
 			{
 				return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
 			}

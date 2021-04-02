@@ -74,7 +74,7 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
-		[HttpPost("GetAllByCarId")]
+		[HttpGet("getallbycarid")]
 		public IActionResult GetAllByCarId(int id)
 		{
 			var result = _rentalService.GetAllByCarId(id);
@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
-		[HttpPost("GetAllByCustomerId")]
+		[HttpGet("getallbycustomerid")]
 		public IActionResult GetAllByCustomerId(int id)
 		{
 			var result = _rentalService.GetAllByCustomerId(id);
@@ -96,7 +96,7 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
-		[HttpPost("GetCarRentalDetails")]
+		[HttpGet("getrentaldetails")]
 		public IActionResult GetCarRentalDetails()
 		{
 			var result = _rentalService.GetCarRentalDetails();
