@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
-		[HttpPost("delete")]
+		[HttpDelete]
 		public IActionResult Delete(Customer customer)
 		{
 			var result = _customerService.Delete(customer);
@@ -87,5 +87,15 @@ namespace WebAPI.Controllers
 			return BadRequest(result);
 		}
 
+		[HttpGet("get-by-email")]
+		public IActionResult GetByEmail(string email)
+		{
+			var result = _customerService.GetByEmail(email);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
+		}
 	}
 }

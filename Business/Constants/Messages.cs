@@ -56,5 +56,11 @@ namespace Business.Constants
 		public static string PaymentError ="Ödemede Hata Oluştu!";
 		public static string PaymentSuccess="Ödeme Başarılı!";
 		public static string CreditCardAdded="Kredi Kartı Eklendi.";
+
+
+		public static string UserListed = "Kullanıcı Listelendi..";
+		public static string UserUpdated = "Kullanıcı Güncellendi..";
+		internal static string CardDeleted;
+		internal static string CardUpdated;
 	}
 }

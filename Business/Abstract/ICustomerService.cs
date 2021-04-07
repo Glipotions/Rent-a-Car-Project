@@ -13,6 +13,7 @@ namespace Business.Abstract
 		IDataResult<List<Customer>> GetAll(Expression<Func<Customer, bool>> filter = null);
 
 		//IDataResult<List<Customer>> GetById(int id);
+		IDataResult<CustomerDetailsDto> GetByEmail(string email);
 		IDataResult<Customer> GetById(int id);
 		IResult Add(Customer entity);
 		IResult Delete(Customer entity);

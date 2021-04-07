@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICreditCardDal : IEntityRepository<CreditCard>
+    public interface ICardDal : IEntityRepository<Card>
     {
     }
 }
