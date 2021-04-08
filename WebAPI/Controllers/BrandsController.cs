@@ -42,37 +42,37 @@ namespace WebAPI.Controllers
 
 		}
 
-		[HttpPost("add")]
+		[HttpPost]
 		public IActionResult Add(Brand brand)
 		{
 			var result = _brandService.Add(brand);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
-		[HttpPost("delete")]
-		public IActionResult Delete(Brand brand)
-		{
-			var result = _brandService.Delete(brand);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-		[HttpPost("update")]
+		[HttpPut]
 		public IActionResult Update(Brand brand)
 		{
 			var result = _brandService.Update(brand);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
+		}
+
+		[HttpDelete]
+		public IActionResult Delete(Brand brand)
+		{
+			var result = _brandService.Delete(brand);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
 	}

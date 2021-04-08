@@ -42,37 +42,37 @@ namespace WebAPI.Controllers
 
 		}
 
-		[HttpPost("add")]
+		[HttpPost]
 		public IActionResult Add(Color color)
 		{
 			var result = _colorService.Add(color);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
-		[HttpPost("delete")]
-		public IActionResult Delete(Color color)
-		{
-			var result = _colorService.Delete(color);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-		[HttpPost("update")]
+		[HttpPut]
 		public IActionResult Update(Color color)
 		{
 			var result = _colorService.Update(color);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
+		}
+
+		[HttpDelete]
+		public IActionResult Delete(Color color)
+		{
+			var result = _colorService.Delete(color);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
 

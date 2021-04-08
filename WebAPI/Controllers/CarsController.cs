@@ -97,37 +97,37 @@ namespace WebAPI.Controllers
 		}
 
 
-		[HttpPost("add")]
+		[HttpPost]
 		public IActionResult Add(Car car)
 		{
 			var result = _carService.Add(car);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
-		[HttpPost("delete")]
-		public IActionResult Delete(Car car)
-		{
-			var result = _carService.Delete(car);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
-		}
-
-		[HttpPost("update")]
+		[HttpPut]
 		public IActionResult Update(Car car)
 		{
 			var result = _carService.Update(car);
-			if (result.Success)
-			{
-				return Ok(result);
-			}
-			return BadRequest(result);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
+		}
+
+		[HttpDelete]
+		public IActionResult Delete(Car car)
+		{
+			var result = _carService.Delete(car);
+
+			if (!result.Success)
+				return BadRequest(result);
+
+			return Ok(result);
 		}
 
 	}
