@@ -2,12 +2,10 @@
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -51,7 +49,7 @@ namespace DataAccess.Concrete.EntityFramework
 							 select new CarDetailsDto
 							 {
 								 Id = c.Id,
-								 CarName=c.CarName,
+								 CarName = c.CarName,
 								 BrandName = b.BrandName,
 								 ModelYear = c.ModelYear,
 								 ColorName = cl.ColorName,

@@ -2,12 +2,10 @@
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -20,14 +18,16 @@ namespace DataAccess.Concrete.EntityFramework
 				var result = from c in context.Customers
 							 join u in context.Users
 							 on c.UserId equals u.Id
-							 select new CustomerDetailsDto {
+							 select new CustomerDetailsDto
+							 {
 								 Id = u.Id,
 								 UserId = c.UserId,
-								 FirstName=u.FirstName,
-								 LastName=u.LastName,
-								 CompanyName=c.CompanyName,
+								 FirstName = u.FirstName,
+								 LastName = u.LastName,
+								 CompanyName = c.CompanyName,
 								 FindexPoint = (int)c.FindexPoint,
-								 Email =u.Email };
+								 Email = u.Email
+							 };
 				return result.ToList();
 			}
 		}

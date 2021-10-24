@@ -2,7 +2,6 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -11,7 +10,6 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -82,7 +80,7 @@ namespace Business.Concrete
 			//{
 			//	return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
 			//}
-			return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c. Id== id));
+			return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id));
 		}
 
 		public IDataResult<List<CarDetailsDto>> GetCarDetails()

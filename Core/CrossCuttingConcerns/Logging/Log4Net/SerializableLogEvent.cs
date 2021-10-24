@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using log4net.Core;
 using System;
-using log4net.Core;
 
 namespace Core.CrossCuttingConcerns.Logging.Log4Net
 {
-    [Serializable]
-    public class SerializableLogEvent
-    {
-        private LoggingEvent _loggingEvent;
+	[Serializable]
+	public class SerializableLogEvent
+	{
+		private LoggingEvent _loggingEvent;
 
-        public SerializableLogEvent(LoggingEvent loggingEvent)
-        {
-            _loggingEvent = loggingEvent;
-        }
+		public SerializableLogEvent(LoggingEvent loggingEvent)
+		{
+			_loggingEvent = loggingEvent;
+		}
 
-        public object Message => _loggingEvent.MessageObject;
-    }
+		public object Message => _loggingEvent.MessageObject;
+	}
 }

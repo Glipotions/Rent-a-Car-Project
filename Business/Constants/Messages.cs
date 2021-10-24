@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
 	public class Messages
 	{
@@ -13,15 +8,15 @@ namespace Business.Constants
 		public static string CarNamedInvalid = "Araba ismi en az 2 karakter olmalıdır!";
 		public static string CarAdded = "Araba Eklendi";
 		public static string BrandNamedInvalid = "Marka ismi en az 2 karakter olmalıdır!";
-		public static string BrandAdded ="Marka Eklendi! ";
+		public static string BrandAdded = "Marka Eklendi! ";
 		public static string Deleted = "Silindi! ";
 		public static string Updated = "Güncellendi! ";
 		public static string Added = "Eklendi! ";
 		public static string Listed = "Listelendi! ";
-		public static string UserNamedInvalid="Kullanıcı adı 3 harften az olamaz!";
-		public static string UserAdded="Kullanıcı Eklendi";
-		public static string UserUpdate="Kullanıcı Güncellendi";
-		public static string UserDeleted="Kullanıcı Silindi";
+		public static string UserNamedInvalid = "Kullanıcı adı 3 harften az olamaz!";
+		public static string UserAdded = "Kullanıcı Eklendi";
+		public static string UserUpdate = "Kullanıcı Güncellendi";
+		public static string UserDeleted = "Kullanıcı Silindi";
 		public static string RentalAdded = "Kiralama işlemi başlatıldı!";
 		public static string RentalUpdated = "Kiralama işlemi Güncellendi";
 		public static string CustomerAdded = "Müşteri Eklendi";
@@ -52,10 +47,10 @@ namespace Business.Constants
 		public static string AccessTokenCreated = "Token oluşturuldu..";
 
 
-		public static string CustomerListed ="Müşteriler Listelendi";
-		public static string PaymentError ="Ödemede Hata Oluştu!";
-		public static string PaymentSuccess="Ödeme Başarılı!";
-		public static string CreditCardAdded="Kredi Kartı Eklendi.";
+		public static string CustomerListed = "Müşteriler Listelendi";
+		public static string PaymentError = "Ödemede Hata Oluştu!";
+		public static string PaymentSuccess = "Ödeme Başarılı!";
+		public static string CreditCardAdded = "Kredi Kartı Eklendi.";
 
 
 		public static string UserListed = "Kullanıcı Listelendi..";

@@ -1,12 +1,4 @@
-﻿using Business.Concrete;
-using Core.Entities.Concrete;
-using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
-using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-
-namespace ConsoleUI
+﻿namespace ConsoleUI
 {
 	class Program
 	{

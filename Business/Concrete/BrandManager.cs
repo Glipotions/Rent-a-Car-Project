@@ -9,7 +9,6 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -25,7 +24,7 @@ namespace Business.Concrete
 		[ValidationAspect(typeof(BrandValidator))]
 		public IResult Add(Brand entity)
 		{
-			
+
 			_brandDal.Add(entity);
 			return new SuccessResult(Messages.BrandAdded);
 		}
@@ -33,7 +32,7 @@ namespace Business.Concrete
 		[SecuredOperation("admin")]
 		public IResult Delete(Brand entity)
 		{
-			
+
 			_brandDal.Delete(entity);
 			return new SuccessResult(Messages.Deleted);
 
